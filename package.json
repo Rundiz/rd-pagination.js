@@ -1,5 +1,5 @@
 {
-  "name": "rd-pagination",
+  "name": "rd-pagination.js",
   "version": "0.0.1",
   "description": "The highly customizable JS pagination class.",
   "main": "index.js",
