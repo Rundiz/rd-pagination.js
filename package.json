@@ -1,0 +1,32 @@
+{
+  "name": "rd-pagination",
+  "version": "0.0.1",
+  "description": "The highly customizable JS pagination class.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rundiz/rd-pagination.js.git"
+  },
+  "keywords": [
+    "pagination",
+    "paging",
+    "pager",
+    "paginate",
+    "slice",
+    "pages",
+    "dynamic",
+    "pagination"
+  ],
+  "author": "Vee W.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rundiz/rd-pagination.js/issues"
+  },
+  "homepage": "https://github.com/Rundiz/rd-pagination.js#readme"
+}

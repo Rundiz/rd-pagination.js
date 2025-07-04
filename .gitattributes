@@ -51,4 +51,5 @@
 /.tests export-ignore
 /jest.config.mjs export-ignore
 /node_modules export-ignore
+/package.json export-ignore
 /tests export-ignore
