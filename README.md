@@ -13,7 +13,7 @@ The highly customizable JS pagination class.
 Example:  
 All HTML you need.
 ```html
-<div id="content">Content of page 1</div>
+<div id="content">Your content.</div>
 <nav class="rd-pagination" aria-label="Page navigation example"></nav>
 <script src="assets/js/rd-pagination.js"></script>
 ```
