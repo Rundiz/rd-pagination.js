@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rundiz | Pagination.JS</title>
+        <link rel="stylesheet" href="../../assets/css/rd-pagination.css">
+    </head>
+    <body>
+        <h1>Sample 4 use full options</h1>
+        <nav class="rd-pagination" aria-label="Page navigation example"></nav>
+        <div id="content">
+            <p id="content-p-sample">Content of page 1</p>
+            <p>Total items are 1250, Items per page of this sample are 9.</p>
+        </div>
+        <nav class="rd-pagination" aria-label="Page navigation example"></nav>
+        <script src="../../assets/js/rd-pagination.js"></script>
+        <script>
+            function myFunction(thisTarget, event, options) {
+                const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
+                const pageNumberDisplay = (pageValue / options.items_per_page) + 1;
+                document.getElementById('content-p-sample').innerText = 'Content of page ' + pageNumberDisplay;
+            }// myFunction
+
+
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const rdPagination = new RdPagination('.rd-pagination', {
+                    base_url: '?start=%PAGENUMBER%',
+                    page_number_value: 0,
+                    total_records: 1250,
+                    items_per_page: 9,
+                    page_number_type: 'start_num',
+
+                    current_page_link: true,
+                    current_page_link_attributes: {
+                        class: 'current-link active-link page-link',
+                    },
+                    current_tag_close: '</span>',
+                    current_tag_open: '<span class="current-page pagination-item">',
+
+                    first_page_always_show: true,
+                    first_page_link_attributes: {
+                        class: 'first-page-link page-link',
+                    },
+                    first_page_text: '&larrb;',
+                    first_tag_close: '</span>',
+                    first_tag_open: '<span class="first-page pagination-item">',
+
+                    last_page_always_show: true,
+                    last_page_link_attributes: {
+                        class: 'last-page-link page-link',
+                    },
+                    last_page_text: '&rarrb;',
+                    last_tag_close: '</span>',
+                    last_tag_open: '<span class="last-page pagination-item">',
+
+                    next_page_always_show: true,
+                    next_page_link_attributes: {
+                        class: 'next-page-link page-link',
+                    },
+                    next_page_text: '&rarr;',
+                    next_tag_close: '</span>',
+                    next_tag_open: '<span class="next-page pagination-item">',
+
+                    number_adjacent_pages: 2,
+                    number_display: true,
+                    number_page_link_attributes: {
+                        class: 'number-page-link page-link',
+                    },
+                    number_tag_close: '</span>',
+                    number_tag_open: '<span class="number-page pagination-item">',
+
+                    overall_tag_close: '</div>',
+                    overall_tag_open: '<div class="inner-pagination pagination-list">',
+
+                    previous_page_always_show: true,
+                    previous_page_link_attributes: {
+                        class: 'prev-page-link page-link',
+                    },
+                    previous_page_text: '&larr;',
+                    previous_tag_close: '</span>',
+                    previous_tag_open: '<span class="prev-page pagination-item">',
+
+                    unavailable_display: true,
+                    unavailable_text: '&#8229;',
+                    unavailable_tag_close: '</span>',
+                    unavailable_tag_open: '<span class="unavailable-page pagination-item">',
+                    unavailable_after: 1,
+                    unavailable_before: 1,
+                    events: {
+                        onclick: myFunction,
+                    }
+                });
+                rdPagination.createLinks();
+            });
+        </script>
+    </body>
+</html>

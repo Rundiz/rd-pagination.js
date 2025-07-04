@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rundiz | Pagination.JS</title>
+    </head>
+    <body>
+        <h1>Sample 6 use AJAX</h1>
+        <p>This page required <strong>getdata.php</strong> to work.</p>
+        <div id="content"></div>
+        <nav class="rd-pagination" aria-label="Page navigation example"></nav>
+        <script src="../../assets/js/rd-pagination.js"></script>
+        <script>
+            /**
+             * AJAX get data and render the result using simple templating.
+             * 
+             * @param {number} offset Pagination start offset.
+             */
+            function ajaxGetData(offset) {
+                return fetch('getdata.php?custom=querystring&offset=' + offset)
+                .then((rawResponse) => {
+                    return rawResponse.json();
+                })
+                .then((response) => {
+                    // render data result.
+                    const resultHTML = simpleTemplating(response.items);
+                    document.getElementById('content').innerHTML = resultHTML;
+                    // and maybe do something else.
+                    return response;
+                })
+            }// ajaxGetData
+
+
+            /**
+             * Simple templating.
+             * 
+             * @param {number[]} The response data from AJAX.
+             */
+            function simpleTemplating(data) {
+                var html = '<ul>';
+                data.forEach((item) => {
+                    html += '<li>' + item + '</li>';
+                });
+                html += '</ul>';
+                return html;
+            }// simpleTemplating
+
+
+            /**
+             * Pagination click callback function.
+             * 
+             * @param {object} thisTarget
+             * @param {object} event
+             * @param {object} options
+             */
+            function paginationClick(thisTarget, event, options) {
+                const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
+                ajaxGetData(pageValue);
+            }// paginationClick
+
+
+            let rdPagination;
+            document.addEventListener('DOMContentLoaded', (event) => {
+                // initialize the pagination class but without `createLinks()`.
+                rdPagination = new RdPagination('.rd-pagination', {
+                    base_url: '?custom=querystring&offset=%PAGENUMBER%',
+                    page_number_value: 0,
+                    total_records: 0,
+                    events: {
+                        onclick: paginationClick,
+                    }
+                });
+
+                // AJAX get data (including render contents) and then create pagination links.
+                ajaxGetData(0)
+                .then((response) => {
+                    rdPagination.updateOptions({
+                        items_per_page: response.itemsPerPage,
+                        total_records: response.totalItems,
+                    })
+                    rdPagination.createLinks();
+                    return response;
+                });
+            });
+        </script>
+    </body>
+</html>

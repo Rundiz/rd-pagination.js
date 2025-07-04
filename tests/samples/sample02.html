@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rundiz | Pagination.JS</title>
+    </head>
+    <body>
+        <h1>Basic sample 2 use page number</h1>
+        <div id="content">Content of page 1</div>
+        <nav class="rd-pagination" aria-label="Page navigation example"></nav>
+        <script src="../../assets/js/rd-pagination.js"></script>
+        <script>
+            function myFunction(thisTarget, event, options) {
+                const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
+                document.getElementById('content').innerText = 'Content of page ' + pageValue;
+            }// myFunction
+
+
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const rdPagination = new RdPagination('.rd-pagination', {
+                    base_url: '?page=%PAGENUMBER%',
+                    page_number_value: 1,
+                    total_records: 195,
+                    page_number_type: 'page_num',
+                    events: {
+                        onclick: myFunction,
+                    }
+                });
+                rdPagination.createLinks();
+            });
+        </script>
+    </body>
+</html>

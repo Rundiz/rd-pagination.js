@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rundiz | Pagination.JS</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>Sample 5 use styles class.</h1>
+                    <p>The styles class contain pre-set options based on selected CSS framework.</p>
+                    <div id="content" class="mb-3">Content of page 1</div>
+                    <nav class="rd-pagination" aria-label="Page navigation example"></nav>
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+        <script src="../../assets/js/rd-pagination.js"></script>
+        <script src="../../assets/js/rd-pagination-styles.js"></script>
+        <script>
+            function myFunction(thisTarget, event, options) {
+                const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
+                const pageNumberDisplay = (pageValue / options.items_per_page) + 1;
+                document.getElementById('content').innerText = 'Content of page ' + pageNumberDisplay;
+            }// myFunction
+
+
+            document.addEventListener('DOMContentLoaded', (event) => {
+                let options = {
+                    base_url: '?start=%PAGENUMBER%',
+                    page_number_value: 0,
+                    total_records: 195,
+                    number_adjacent_pages: 2,
+                    events: {
+                        onclick: myFunction,
+                    },
+                };
+                options = {...options, ...(new RdPaginationStyles()).getOptionsStyle('bootstrap5')};
+                const rdPagination = new RdPagination('.rd-pagination', options);
+                rdPagination.createLinks();
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rundiz | Pagination.JS</title>
+        <style>
+            nav {
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Sample 7 use multiple pagination styles</h1>
+        <div id="content">Content 1 of page 1</div>
+        <nav class="rd-pagination" aria-label="Page navigation example"></nav>
+        <nav class="rd-pagination2" aria-label="Page navigation example"></nav>
+        <nav class="rd-pagination3" aria-label="Page navigation example"></nav>
+
+        <hr>
+        <div id="content2">Content 2 of page 1</div>
+        <nav class="rd-pagination4" aria-label="Page navigation example"></nav>
+        <script src="../../assets/js/rd-pagination.js"></script>
+        <script>
+            const paginationsFor1 = [];
+
+
+            function myFunction(thisTarget, event, options) {
+                const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
+                const pageNumberDisplay = (pageValue / options.items_per_page) + 1;
+                document.getElementById('content').innerText = 'Content 1 of page ' + pageNumberDisplay;
+
+                // loop update each pagination styles for content 1.
+                paginationsFor1.forEach((eachPaginationObj) => {
+                    eachPaginationObj.updateOptions({page_number_value: pageValue});
+                    eachPaginationObj.createLinks();
+                });
+            }// myFunction
+
+
+            function myFunction2(thisTarget, event, options) {
+                const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
+                const pageNumberDisplay = (pageValue / options.items_per_page) + 1;
+                document.getElementById('content2').innerText = 'Content 2 of page ' + pageNumberDisplay;
+            }// myFunction2
+
+
+            const total_records = 195;
+            const current_offset = 0;
+
+
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const rdPagination = new RdPagination('.rd-pagination', {
+                    base_url: '?start=%PAGENUMBER%',
+                    page_number_value: current_offset,
+                    total_records: total_records,
+                    events: {
+                        onclick: myFunction,
+                    }
+                });
+                rdPagination.createLinks();
+                paginationsFor1.push(rdPagination);
+
+                const rdPagination2 = new RdPagination('.rd-pagination2', {
+                    base_url: '?start=%PAGENUMBER%',
+                    page_number_value: current_offset,
+                    total_records: total_records,
+                    number_adjacent_pages: 1,
+                    first_page_text: false,
+                    last_page_text: false,
+                    events: {
+                        onclick: myFunction,
+                    }
+                });
+                rdPagination2.createLinks();
+                paginationsFor1.push(rdPagination2);
+
+                const rdPagination3 = new RdPagination('.rd-pagination3', {
+                    base_url: '?start=%PAGENUMBER%',
+                    page_number_value: current_offset,
+                    total_records: total_records,
+                    number_display: false,
+                    first_page_text: false,
+                    last_page_text: false,
+                    events: {
+                        onclick: myFunction,
+                    }
+                });
+                rdPagination3.createLinks();
+                paginationsFor1.push(rdPagination3);
+
+                const rdPagination4 = new RdPagination('.rd-pagination4', {
+                    base_url: '?start=%PAGENUMBER%',
+                    page_number_value: current_offset,
+                    total_records: total_records,
+                    number_adjacent_pages: 1,
+                    first_page_text: false,
+                    last_page_text: false,
+                    events: {
+                        onclick: myFunction2,
+                    }
+                });
+                rdPagination4.createLinks();
+            });
+        </script>
+    </body>
+</html>

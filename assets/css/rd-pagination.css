@@ -1,0 +1,67 @@
+/*
+Rundiz Pagination.JS CSS
+
+This file is for sample, it is no need but you can use it in your project.
+*/
+
+
+.rd-pagination {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    margin: 20px 0;
+}
+
+
+.rd-pagination .pagination-list {
+    column-gap: 1px;
+    display: flex;
+    flex-direction: row;
+}
+
+.rd-pagination .first-page {
+    border-bottom-left-radius: 50cqmin;
+    border-top-left-radius: 50cqmin;
+}
+.rd-pagination .first-page .page-link {
+    padding-left: 14px;
+}
+.rd-pagination .last-page {
+    border-bottom-right-radius: 50cqmin;
+    border-top-right-radius: 50cqmin;
+}
+.rd-pagination .last-page .page-link {
+    padding-right: 14px;
+}
+
+.rd-pagination .pagination-item {
+    text-align: center;
+}
+.rd-pagination .pagination-item:hover {
+    background-color: rgba(190, 190, 190, 0.3);
+}
+.rd-pagination .unavailable-page {
+    padding: 6px 10px;
+    cursor: default;
+}
+.rd-pagination .unavailable-page:hover {
+    background-color: inherit;
+}
+.rd-pagination .page-link {
+    display: block;
+    padding: 6px 10px;
+    text-decoration: none;
+}
+.rd-pagination .page-link:active {
+    color: rgb(35, 61, 212);
+}
+
+.rd-pagination .current-page {
+    background-color: rgb(69, 115, 202);
+}
+.rd-pagination .current-page:hover {
+    background-color: rgb(34, 92, 201);
+}
+.rd-pagination .current-link:active,
+.rd-pagination .current-link {
+    color: #fff;
+}
