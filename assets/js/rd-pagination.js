@@ -4,8 +4,11 @@
  * Ported from **Rundiz\Pagination** ( https://github.com/Rundiz/pagination ).
  * 
  * @package rd-pagination.js
- * @version 0.0.1
+ * @version 0.0.2
  */
+
+
+'use strict';
 
 
 /**
@@ -578,6 +581,16 @@ class RdPagination {
 
 
     /**
+     * Get options from `#options` property.
+     * 
+     * @since 0.0.2
+     */
+    get options() {
+        return this.#options;
+    }// options
+
+
+    /**
      * Generate the pagination data for render in HTML.  
      * You can call to this method directly if you want to render pagination on your own styles.
      * 
@@ -826,3 +839,8 @@ class RdPagination {
 
 
 }// RdPagination
+
+
+if (typeof module === "object" && typeof module.exports === "object") {
+    module.exports = RdPagination;
+}

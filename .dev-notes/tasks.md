@@ -1,7 +1,7 @@
 ## Start development
 
 ### Update class constructor's options.
-1. From main folder in this repo. Use command `/full/path/to/node_modules/.bin/jsdoc2md.cmd assets/js/rd-pagination.js`
+1. From main folder in this repo. Use command `npm run jsdoc2md assets/js/rd-pagination.js`
 2. Copy  markdown to readme file below `### Options` section.
 -----
 
