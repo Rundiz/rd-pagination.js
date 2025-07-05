@@ -1,4 +1,4 @@
-const RdPagination = require('../assets/js/rd-pagination');
+const RdPagination = require('../assets/js/rd-pagination.min');
 const myMock = jest.fn();
 
 describe('Test assets/js/rd-pagination.js options.', () => {

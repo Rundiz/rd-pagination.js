@@ -3,6 +3,7 @@
  * 
  * Ported from **Rundiz\Pagination** ( https://github.com/Rundiz/pagination ).
  * 
+ * @preserve Preserve file header doc-block.
  * @package rd-pagination.js
  * @version 0.0.2
  */
@@ -424,7 +425,7 @@ class RdPagination {
     /**
      * Validate options and throw errors if something went wrong.
      * 
-     * @throws Throw the error is validate failed.
+     * @throws Throw the error if validate failed.
      */
     #validateOptions() {
         if (typeof(this.#options.base_url) !== 'string') {
@@ -595,7 +596,7 @@ class RdPagination {
      * You can call to this method directly if you want to render pagination on your own styles.
      * 
      * @returns {object} Return generated pagination data as object.
-     * @throws Throw the error is validate option failed.
+     * @throws Throw the error if validate option failed.
      */
     getPaginationData() {
         this.#validateOptions();

@@ -8,6 +8,7 @@
   },
   "scripts": {
     "jsdoc2md": "jsdoc2md",
+    "terser": "terser",
     "test": "jest"
   },
   "repository": {
@@ -33,6 +34,7 @@
   "devDependencies": {
     "jest": "^30.0.4",
     "jsdoc": "^4.0.4",
-    "jsdoc-to-markdown": "^9.1.1"
+    "jsdoc-to-markdown": "^9.1.1",
+    "terser": "^5.43.1"
   }
 }
