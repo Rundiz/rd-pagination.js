@@ -27,7 +27,17 @@ rdPagination.createLinks();
 ```
 That's all. See more samples in folder **tests/samples**.
 
-# Pagination parts description
+### Samples
+* [Sample 1](https://rundiz.github.io/rd-pagination.js/tests/samples/sample01.html) use offset query string.
+* [Sample 2](https://rundiz.github.io/rd-pagination.js/tests/samples/sample02.html) use page number query string.
+* [Sample 3](https://rundiz.github.io/rd-pagination.js/tests/samples/sample03.html) use different selector.
+* [Sample 4](https://rundiz.github.io/rd-pagination.js/tests/samples/sample04.html) full options.
+* [Sample 5](https://rundiz.github.io/rd-pagination.js/tests/samples/sample05.html) use pre-set style class.
+* [Sample 6](https://rundiz.github.io/rd-pagination.js/tests/samples/sample06.html) use AJAX. (Please download and try it from your server.)
+* [Sample 7](https://rundiz.github.io/rd-pagination.js/tests/samples/sample07.html) use multiple pagination.
+
+## Pagination parts description
+This repository ported from [Rundiz Pagination](https://github.com/Rundiz/pagination). So, I will use image from that.
 ![Pagination](https://github.com/Rundiz/pagination/raw/master/tests/via-http/pagination-description.jpg "Pagination description")
 
 * "before unavailable" items number can be set via `unavailable_before` option. Example: `{unavailable_before: 1}`
