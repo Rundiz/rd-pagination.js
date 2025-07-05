@@ -33,7 +33,7 @@ That's all. See more samples in folder **tests/samples**.
 * [Sample 3](https://rundiz.github.io/rd-pagination.js/tests/samples/sample03.html) use different selector.
 * [Sample 4](https://rundiz.github.io/rd-pagination.js/tests/samples/sample04.html) full options.
 * [Sample 5](https://rundiz.github.io/rd-pagination.js/tests/samples/sample05.html) use pre-set style class.
-* [Sample 6](https://rundiz.github.io/rd-pagination.js/tests/samples/sample06.html) use AJAX. (Please download and try it from your server.)
+* [Sample 6](https://rundiz.github.io/rd-pagination.js/tests/samples/sample06-ajax.html) use AJAX. (Please download and try it from your server.)
 * [Sample 7](https://rundiz.github.io/rd-pagination.js/tests/samples/sample07.html) use multiple pagination.
 
 ## Pagination parts description
