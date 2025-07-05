@@ -45,3 +45,51 @@ This repository ported from [Rundiz Pagination](https://github.com/Rundiz/pagina
 * "adjacent pages" can be set the number via `number_adjacent_pages` option. Example: `{number_adjacent_pages: = 3}`
 * "after unavailable" items number can be set via `unavailable_after` option. Example: `{unavailable_after: 2}`
 * Read more in JS class constructor on `options` argument.
+
+### Options
+| Param | Type | Description |
+| --- | --- | --- |
+| options.base_url | <code>string</code> | The URL for use when generate page numbers with links (Required).                Set the position where page numbers will be appears as URI segment or query string with `%PAGENUMBER%` placeholder.                Example 1: `http://domain.tld/my-category/page/%PAGENUMBER%` This URL use page number as URI segment.                Example 2: `http://domain.tld/my-category?page=%PAGENUMBER%` This URL use page number as query string.                Example 3: `http://domain.tld/my-category?filter=some_filter_values&amp;search=foobar&amp;page=%PAGENUMBER%` This URL use page number as query string with other query strings in it, seperate each query string with `&amp;` not just `&`.                Example 4: `http://domain.tld/my-category?start=%PAGENUMBER%` This URL use page number as query string but use start as the name.                You have to get the page number value and set its value to this class by call the "page_number_value" option. |
+| options.page_number_value | <code>number</code> | The current page number value (Required). This class cannot detect current page number automatically because of dynamic styles of URL. So, you have to manually set its value to this option. |
+| options.total_records | <code>number</code> | The total number of records (Required). This means "all" records by conditions with out the "LIMIT" or slices commands. |
+| options.items_per_page | <code>number</code> | The number of items that will be displaying per page. Such as number of articles to display in each page. Default is 10. |
+| options.page_number_type | <code>string</code> | The page number type. The value can be `start_num` or `page_num`. Default is `start_num`.                Start number or `start_num` also know as offset number. (eg. page number value will be 0, 10, 20, 30, ...)                Page number or `page_num`. (eg. page number value will be 1, 2, 3, 4, ...) |
+| options.current_page_link | <code>boolean</code> | Display current link at current page. Set to true to display, false not to display. Default is `false`. |
+| options.current_page_link_attributes | <code>object</code> | The current page link attributes in object where key is attribute name.               Example `{'class' => 'my class'}`. Must not contains `href`, `data-rd-pagination` attributes. |
+| options.current_tag_close | <code>string</code> | The current page tag close. If you set to display current page, this will be placed after link to the current page. Default is empty. |
+| options.current_tag_open | <code>string</code> | The current page tag open. If you set to display current page, this will be placed before link to the current page. Default is empty. |
+| options.first_page_always_show | <code>boolean</code> | If you are at first page the first page link will not show if you set this value to false, if you set to true it will be always show the first page link. Default is `false`. |
+| options.first_page_link_attributes | <code>object</code> | The first page link attributes in object where key is attribute name.               Example `{'class' => 'my class'}`. Must not contains `href`, `data-rd-pagination` attributes. |
+| options.first_page_text | <code>string</code> \| <code>false</code> | The link text of the paginate that will go to the first page. Set to false to not displaying first page link. |
+| options.first_tag_close | <code>string</code> | The first page tag close. If you set to display first page, this will be placed after link to the first page. Default is 1 space. |
+| options.first_tag_open | <code>string</code> | The first page tag open. If you set to display first page, this will be placed before link to the first page. Default is 1 space. |
+| options.last_page_always_show | <code>boolean</code> | If you are at last page the last page link will not show if you set this value to false, if you set to true it will be always show the last page link. Default is `false`. |
+| options.last_page_link_attributes | <code>object</code> | The last page link attributes in object where key is attribute name.               Example `{'class' => 'my class'}`. Must not contains `href`, `data-rd-pagination` attributes. |
+| options.last_page_text | <code>string</code> \| <code>false</code> | The link text of the paginate that will go to the last page. Set to false to not displaying last page link. |
+| options.last_tag_close | <code>string</code> | The last page tag close. If you set to display last page, this will be placed after link to the last page. Defauls is 1 space. |
+| options.last_tag_open | <code>string</code> | The last page tag open. If you set to display last page, this will be placed before link to the last page. Default is 1 space. |
+| options.next_page_always_show | <code>boolean</code> | If you are at last page the next page link will not show if you set this value to false, if you set to true it will be always show the next page link. Default is `false`. |
+| options.next_page_link_attributes | <code>object</code> | The next page link attributes in object where key is attribute name.               Example `{'class' => 'my class'}`. Must not contains `href`, `data-rd-pagination` attributes. |
+| options.next_page_text | <code>string</code> \| <code>false</code> | The link text of the paginate that will go to the next page. Set to false to not displaying next page link. |
+| options.next_tag_close | <code>string</code> | The next page tag close. If you set to display next page, this will be placed after link to the next page. Default is 1 space. |
+| options.next_tag_open | <code>string</code> | The next page tag open. If you set to display next page, this will be placed before link to the next page. Default is 1 space. |
+| options.number_adjacent_pages | <code>number</code> | The number of adjacent pages before and after the current page. Defaut is 5. |
+| options.number_display | <code>boolean</code> | Display the page numbers or not. Set to true to display, false not to display. Default is `true`. |
+| options.number_page_link_attributes | <code>object</code> | The number page link attributes in object where key is attribute name.               Example `{'class' => 'my class'}`. Must not contains `href`, `data-rd-pagination` attributes. |
+| options.number_tag_close | <code>string</code> | The page number tag close. If you set to display page number, this will be placed after link to the page number. Default is 1 space. |
+| options.number_tag_open | <code>string</code> | The page number tag open. If you set to display page number, this will be placed before link to the page number. Default is 1 space. |
+| options.overall_tag_close | <code>string</code> | The overall tag close. It will be place at the very end of displaying page numbers. Default is empty. |
+| options.overall_tag_open | <code>string</code> | The overall tag open. It will be place at the very beginning of displaying page numbers. Default is empty. |
+| options.previous_page_always_show | <code>boolean</code> | If you are at first page the previous page link will not show if you set this value to false, if you set to true it will be always show the previous page link. Default is `false`. |
+| options.previous_page_link_attributes | <code>object</code> | The previous page link attributes in object where key is attribute name.               Example `{'class' => 'my class'}`. Must not contains `href`, `data-rd-pagination` attributes. |
+| options.previous_page_text | <code>string</code> \| <code>false</code> | The link text of the paginate that will go to the previous page. Set to false to not displaying previous page link. |
+| options.previous_tag_close | <code>string</code> | The previous page tag close. If you set to display previous page, this will be placed after link to the previous page. Default is 1 space. |
+| options.previous_tag_open | <code>string</code> | The previous page tag open. If you set to display previous page, this will be placed before link to the previous page. Default is 1 space. |
+| options.unavailable_display | <code>boolean</code> | Display unavailable page (...) or not. Set to true to display, false to not display. Default is `false`. |
+| options.unavailable_text | <code>string</code> | The unavailable page text. Basically it is something to show that there are pages between these range such as 3 dots text. (...) Default is `&hellip;`. |
+| options.unavailable_tag_close | <code>string</code> | The unavailable page tag close. If you set to display unavailable page, this will be placed after unavailable page (...). Default is 1 space. |
+| options.unavailable_tag_open | <code>string</code> | The unavailable page tag open. If you set to display unavailable page, this will be placed before unavailable page (...). Default is 1 space. |
+| options.unavailable_after | <code>number</code> \| <code>false</code> | Number of pages to display after last unavailable page. Set number as integer or set to false to not display the pages after unavailable. Default is 2. |
+| options.unavailable_before | <code>number</code> \| <code>false</code> | Number of pages to display before first unavailable page. Set number as integer or set to false to not display the pages before unavailable. Default is 2. |
+| options.events | <code>object</code> | The events to be called. |
+| options.events.onclick | <code>CallableFunction</code> | On click event. This event is fired after displayed pagination. Set callback function here to call when user clicked. |
