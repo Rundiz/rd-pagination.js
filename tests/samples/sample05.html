@@ -4,19 +4,30 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rundiz | Pagination.JS</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="sample-pages.css">
+        <link id="preset-style-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="col">
+        <div class="rdpjs-page-container">
+            <div class="rdpjs-page-row">
+                <div class="rdpjs-page-column">
                     <h1>Sample 5 use styles class.</h1>
                     <p>The styles class contain pre-set options based on selected CSS framework.</p>
-                    <div id="content" class="mb-3">Content of page 1</div>
-                    <nav class="rd-pagination" aria-label="Page navigation example"></nav>
-                </div><!-- .col -->
-            </div><!-- .row -->
-        </div><!-- .container -->
+                    <div id="content" class="rdpjs-block-bottom-space">Content of page 1</div>
+                    <nav class="rd-pagination rdpjs-block-bottom-space" aria-label="Page navigation example"></nav>
+                    <hr>
+                    <h3>Change pre-set style</h3>
+                    <select id="preset-styles" class="rdpjs-select-box">
+                        <option value="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" data-style-name="bootstrap5" selected>Bootstrap 5</option>
+                        <option value="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" data-style-name="bootstrap4">Bootstrap 4</option>
+                        <option value="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" data-style-name="bootstrap3">Bootstrap 3</option>
+                        <option value="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" data-style-name="bulma1">Bulma 1</option>
+                        <option value="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation.min.css" data-style-name="foundation6">Foundation 6</option>
+                    </select>
+                </div><!-- .rdpjs-page-column -->
+            </div><!-- .rdpjs-page-row -->
+            </div>
+        </div><!-- .rdpjs-page-container -->
         <script src="../../assets/js/rd-pagination.min.js"></script>
         <script src="../../assets/js/rd-pagination-styles.js"></script>
         <script>
@@ -29,7 +40,8 @@
 
 
             document.addEventListener('DOMContentLoaded', (event) => {
-                let options = {
+                // rd-pagination.js work. -----------------------------------
+                const defaultOptions = {
                     base_url: '?start=%PAGENUMBER%',
                     page_number_value: 0,
                     total_records: 195,
@@ -38,9 +50,35 @@
                         onclick: myFunction,
                     },
                 };
-                options = {...options, ...(new RdPaginationStyles()).getOptionsStyle('bootstrap5')};
+                const options = {...defaultOptions, ...(new RdPaginationStyles()).getOptionsStyle('bootstrap5')};
                 const rdPagination = new RdPagination('.rd-pagination', options);
                 rdPagination.createLinks();
+                // end rd-pagination.js work. --------------------------------
+
+                // change pre-set style select box functional. ---------------
+                const presetStyles = document.getElementById('preset-styles');
+                const presetStyleCSS = document.getElementById('preset-style-css');
+                if (presetStyles && presetStyleCSS) {
+                    presetStyles.addEventListener('change', (event) => {
+                        // get selected option.
+                        const selectedOption = event.target.options[event.target.selectedIndex];
+                        // update pagination container HTML.
+                        document.querySelectorAll('.rd-pagination')?.forEach((eachPagination) => {
+                            if (selectedOption.dataset.styleName === 'bulma1') {
+                                eachPagination.classList.add('pagination');
+                            } else {
+                                eachPagination.classList.remove('pagination');
+                            }
+                        });
+                        // update rd-pagination.js options and display it.
+                        rdPagination.updateOptions({
+                            ...defaultOptions, ...(new RdPaginationStyles()).getOptionsStyle(selectedOption.dataset.styleName)
+                        });
+                        rdPagination.createLinks();
+                        presetStyleCSS.href = event.target.value;
+                    });
+                }
+                // end change pre-set style select box functional. -----------
             });
         </script>
     </body>
