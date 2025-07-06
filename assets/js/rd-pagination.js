@@ -125,7 +125,7 @@ class RdPagination {
      * @param {number|false} options.unavailable_before Number of pages to display before first unavailable page. Set number as integer or set to false to not display the pages before unavailable. Default is 2.
      * 
      * @param {object} options.events The events to be called.
-     * @param {CallableFunction} options.events.onclick On click event. This event is fired after displayed pagination. Set callback function here to call when user clicked. If you set callback function, this class will not use `preventDefault()` to let you handle it.
+     * @param {function} options.events.onclick On click event. This event is fired after displayed pagination. Set callback function here to call when user clicked. If you set callback function, this class will not use `preventDefault()` to let you handle it.
      */
     constructor(selector, options = {}) {
         if (typeof(selector) !== 'string') {

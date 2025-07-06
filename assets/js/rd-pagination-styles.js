@@ -186,8 +186,8 @@ class RdPaginationStyles {
      * @throws Throw the errors if invalid argument.
      */
     getOptionsStyle(name) {
-        if (typeof(name) !== 'string' || name.trim() === '') {
-            throw new Error('The argument name must be string and not empty.');
+        if (typeof(name) !== 'string') {
+            throw new Error('The argument name must be string.');
         }
         name = name.trim();
 
