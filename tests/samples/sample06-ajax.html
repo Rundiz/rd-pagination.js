@@ -55,6 +55,7 @@
              * @param {object} options
              */
             function paginationClick(thisTarget, event, options) {
+                event.preventDefault();
                 const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
                 ajaxGetData(pageValue);
             }// paginationClick

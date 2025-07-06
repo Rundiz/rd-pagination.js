@@ -125,7 +125,7 @@ class RdPagination {
      * @param {number|false} options.unavailable_before Number of pages to display before first unavailable page. Set number as integer or set to false to not display the pages before unavailable. Default is 2.
      * 
      * @param {object} options.events The events to be called.
-     * @param {CallableFunction} options.events.onclick On click event. This event is fired after displayed pagination. Set callback function here to call when user clicked.
+     * @param {CallableFunction} options.events.onclick On click event. This event is fired after displayed pagination. Set callback function here to call when user clicked. If you set callback function, this class will not use `preventDefault()` to let you handle it.
      */
     constructor(selector, options = {}) {
         if (typeof(selector) !== 'string') {
@@ -405,7 +405,6 @@ class RdPagination {
                 thisTarget.closest(this.#selector)
             ) {
                 thisTarget = thisTarget.closest('[data-rd-pagination-link]');
-                event.preventDefault();
             } else {
                 return ;
             }
@@ -414,8 +413,15 @@ class RdPagination {
             this.updateOptions({page_number_value: thisTarget.dataset.rdPaginationPageValue});
             // display pagination.
             this.createLinks();
-            // fire callback event.
-            this.#events?.onclick(thisTarget, event, this.#options);
+            if (this.#events?.onclick && typeof(this.#events?.onclick) === 'function') {
+                // if there is `onclick` property specified and it is function (including class.method, anonymous function).
+                // fire callback event.
+                this.#events.onclick(thisTarget, event, this.#options);
+            } else {
+                // if there is no `onclick` property.
+                // handle `preventDefault()`. This will not call `preventDefault()` when there is `onclick` property specified to let dev handle the way it works.
+                event.preventDefault();
+            }
         });
 
         this.#isListenedClickEvent = true;
@@ -835,6 +841,14 @@ class RdPagination {
      * @param {object} options The options. See more at class constructor.
      */
     updateOptions(options = {}) {
+        if (options?.events) {
+            this.#events = options.events;
+        }
+
+        // force delete unwanted that may have.
+        delete options.events;
+        delete options.total_pages;
+        // merge and set options.
         this.#options = {...this.#options, ...options};
     }// updateOptions
 

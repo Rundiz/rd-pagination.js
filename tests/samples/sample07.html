@@ -26,6 +26,7 @@
 
 
             function myFunction(thisTarget, event, options) {
+                event.preventDefault();
                 const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
                 const pageNumberDisplay = (pageValue / options.items_per_page) + 1;
                 document.getElementById('content').innerText = 'Content 1 of page ' + pageNumberDisplay;
@@ -39,6 +40,7 @@
 
 
             function myFunction2(thisTarget, event, options) {
+                event.preventDefault();
                 const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
                 const pageNumberDisplay = (pageValue / options.items_per_page) + 1;
                 document.getElementById('content2').innerText = 'Content 2 of page ' + pageNumberDisplay;

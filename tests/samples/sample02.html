@@ -12,6 +12,7 @@
         <script src="../../assets/js/rd-pagination.min.js"></script>
         <script>
             function myFunction(thisTarget, event, options) {
+                event.preventDefault();
                 const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
                 document.getElementById('content').innerText = 'Content of page ' + pageValue;
             }// myFunction

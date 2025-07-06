@@ -17,6 +17,7 @@
         <script src="../../assets/js/rd-pagination.min.js"></script>
         <script>
             function myFunction(thisTarget, event, options) {
+                event.preventDefault();
                 const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
                 const pageNumberDisplay = (pageValue / options.items_per_page) + 1;
                 document.getElementById('content-p-sample').innerText = 'Content of page ' + pageNumberDisplay;
