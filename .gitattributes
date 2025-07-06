@@ -48,8 +48,11 @@
 /.dev-notes export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore
+/.htaccess export-ignore
 /.tests export-ignore
+/jest.config.js export-ignore
 /jest.config.mjs export-ignore
 /node_modules export-ignore
 /package.json export-ignore
+/package-lock.json export-ignore
 /tests export-ignore
