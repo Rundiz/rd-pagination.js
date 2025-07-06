@@ -5,7 +5,7 @@
  * 
  * @preserve Preserve file header doc-block.
  * @package rd-pagination.js
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 

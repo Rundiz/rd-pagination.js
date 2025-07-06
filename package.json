@@ -1,6 +1,6 @@
 {
   "name": "rd-pagination.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The highly customizable JS pagination class.",
   "main": "index.js",
   "directories": {
