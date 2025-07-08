@@ -22,6 +22,12 @@ body {
 }
 
 
+footer {
+    color: #777;
+    font-size: small;
+}
+
+
 h1, h2, h3, h4, h5, h6,
 hr,
 p {
@@ -67,9 +73,35 @@ hr {
     }
 }
 .rdpjs-page-column {
-    flex-basis: 0px;
+    flex-basis: 0%;
     flex-grow: 1;
     flex-shrink: 0;
+}
+.rdpjs-column-pagination {
+    display: flex;
+    flex-basis: auto;
+    justify-content: center;
+    width: 100%;
+}
+@media (min-width: 650px) {
+    .rdpjs-column-pagination {
+        flex-basis: 0%;
+        justify-content: flex-end;
+        width: auto;
+    }
+}
+.rdpjs-page-column-sidebar {
+    flex-grow: 1;
+    flex-shrink: 0;
+    width: 100%;
+}
+@media (min-width: 800px) {
+    .rdpjs-page-column-sidebar {
+        flex-basis: auto;
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 25%;
+    }
 }
 .rdpjs-page-row {
     column-gap: 15px;
@@ -82,11 +114,78 @@ hr {
 }
 
 
+.rdpjs-block-box {
+    border: 1px solid #ccc;
+    padding: 3px;
+}
+
+
 .rdpjs-block-bottom-space {
     margin-bottom: 20px;
 }
+.rdpjs-block-top-space {
+    margin-top: 20px;
+}
 .rdpjs-text-bottom-space {
     margin-bottom: 10px;
+}
+
+
+.rdpjs-data-table-wrapper {
+    overflow-x: auto;
+}
+.rdpjs-data-table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;
+}
+.rdpjs-data-table td,
+.rdpjs-data-table th {
+    border: 1px solid #ccc;
+    padding: 3px 5px;
+    text-align: left;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+
+.rdpjs-custom-pagination-selectbox {
+    column-gap: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.rdpjs-custom-pagination-selectbox li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.rdpjs-custom-pagination-selectbox li > a {
+    color: rgb(49, 95, 196);
+    display: block;
+    padding: 6px 10px;
+    text-decoration: none;
+}
+.rdpjs-custom-pagination-selectbox li > a:active {
+    color: rgb(0, 38, 255);
+}
+.rdpjs-custom-pagination-selectbox li > a:hover {
+    background-color: rgba(190, 190, 190, 0.3);
+}
+.rdpjs-custom-pagination-selectbox #custom-pagination {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    height: 100%;
+    margin: 0;
+    padding: 6px 10px;
+}
+
+
+.rdpjs-pagination-row {
+    margin-bottom: 20px;
 }
 
 

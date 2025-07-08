@@ -836,6 +836,28 @@ class RdPagination {
 
 
     /**
+     * Re-create links on all selector matched.  
+     * This is for reduce process on method `getPaginationData()` in case there is already one.
+     * 
+     * @since 0.0.4
+     * @param {object} pagination_data Processed data from `getPaginationData()`.
+     */
+    reCreateLinks(pagination_data) {
+        if (typeof(pagination_data) !== 'object') {
+            throw new Error('The argument `pagination_data` must be object.');
+        }
+
+        // render the pagination. --------------------------------------
+        const pagination_rendered = this.#getPaginationHTML(pagination_data);
+        // end render the pagination. ----------------------------------
+
+        document.querySelectorAll(this.#selector)?.forEach((eachDOM) => {
+            eachDOM.innerHTML = pagination_rendered;
+        });
+    }// reCreateLinks
+
+
+    /**
      * Update options that is already exists on class's property.
      * 
      * @param {object} options The options. See more at class constructor.
