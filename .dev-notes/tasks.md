@@ -10,7 +10,7 @@
 2. Copy  markdown to readme file below `### Options` section.
 
 ### Minify JS
-1. Use this command: `npm run terser -- "assets/js/rd-pagination.js" --compress --comments --source-map "url='../assets/js/rd-pagination.min.js.map'" --output "assets/js/rd-pagination.min.js"`.  
+1. Use this command: `npm run terser -- "assets/js/rd-pagination.js" --compress --comments --source-map "url='rd-pagination.min.js.map'" --output "assets/js/rd-pagination.min.js"`.  
     Or easier is to run command: `npm run minify`.  
 2. And then run test command `npm run test`.
 

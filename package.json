@@ -8,7 +8,7 @@
   },
   "scripts": {
     "jsdoc2md": "jsdoc2md",
-    "minify": "terser \"assets/js/rd-pagination.js\" --compress --comments --source-map \"url='../assets/js/rd-pagination.min.js.map'\" --output \"assets/js/rd-pagination.min.js\"",
+    "minify": "terser \"assets/js/rd-pagination.js\" --compress --comments --source-map \"url='rd-pagination.min.js.map'\" --output \"assets/js/rd-pagination.min.js\"",
     "terser": "terser",
     "test": "jest"
   },
