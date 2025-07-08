@@ -187,7 +187,7 @@ class Sample08 {
                 return ;
             }
 
-            const pageValue = thisTarget.dataset.rdPaginationPageValue;
+            const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
             // trigger click the same button on primary pagination to update main contents (based on page clicked).
             const targetLink = document.querySelector(this.#mainPaginationSelector + ' [data-rd-pagination-page-value="' + pageValue + '"]');
             if (targetLink) {
