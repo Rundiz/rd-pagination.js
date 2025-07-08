@@ -19,5 +19,6 @@
 To publish this package to node package manager please follow instruction.
 
 1. Update the version number in **package.json** and **assets/js/rd-pagination.js**.
+2. Make sure that you minify with new version. Also check the options on readme either.
 2. Commit and push to Github.
 3. run `npm publish` command.
