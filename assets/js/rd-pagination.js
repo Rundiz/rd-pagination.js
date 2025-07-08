@@ -58,12 +58,12 @@ class RdPagination {
      * 
      * @param {string} selector The selector for HTML elements that will be render the pagination.
      * @param {object} options The options (Required).
-     * @param {string} options.base_url The URL for use when generate page numbers with links (Required).  
-     *              Set the position where page numbers will be appears as URI segment or query string with `%PAGENUMBER%` placeholder.  
-     *              Example 1: `http://domain.tld/my-category/page/%PAGENUMBER%` This URL use page number as URI segment.  
-     *              Example 2: `http://domain.tld/my-category?page=%PAGENUMBER%` This URL use page number as query string.  
-     *              Example 3: `http://domain.tld/my-category?filter=some_filter_values&amp;search=foobar&amp;page=%PAGENUMBER%` This URL use page number as query string with other query strings in it, seperate each query string with `&amp;` not just `&`.  
-     *              Example 4: `http://domain.tld/my-category?start=%PAGENUMBER%` This URL use page number as query string but use start as the name.  
+     * @param {string} options.base_url The URL for use when generate page numbers with links (Required).<br>
+     *              Set the position where page numbers will be appears as URI segment or query string with `%PAGENUMBER%` placeholder.<br>
+     *              Example 1: `http://domain.tld/my-category/page/%PAGENUMBER%` This URL use page number as URI segment.<br>
+     *              Example 2: `http://domain.tld/my-category?page=%PAGENUMBER%` This URL use page number as query string.<br>
+     *              Example 3: `http://domain.tld/my-category?filter=some_filter_values&amp;search=foobar&amp;page=%PAGENUMBER%` This URL use page number as query string with other query strings in it, seperate each query string with `&amp;` not just `&`.<br>
+     *              Example 4: `http://domain.tld/my-category?start=%PAGENUMBER%` This URL use page number as query string but use start as the name.<br>
      *              You have to get the page number value and set its value to this class by call the "page_number_value" option.
      * @param {number} options.page_number_value The current page number value (Required). This class cannot detect current page number automatically because of dynamic styles of URL. So, you have to manually set its value to this option.
      * @param {number} options.total_records The total number of records (Required). This means "all" records by conditions with out the "LIMIT" or slices commands.
