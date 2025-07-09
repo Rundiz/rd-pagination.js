@@ -7,8 +7,11 @@
     "test": "tests"
   },
   "scripts": {
+    "build": "rollup -c && npm run minify",
+    "clean": "rimraf -g assets/js/rd-pagination.*.js assets/js/rd-pagination.min.js.map",
     "jsdoc2md": "jsdoc2md",
     "minify": "terser \"assets/js/rd-pagination.js\" --compress --comments --source-map \"url='rd-pagination.min.js.map'\" --output \"assets/js/rd-pagination.min.js\"",
+    "rollup": "rollup",
     "terser": "terser",
     "test": "jest"
   },
@@ -33,9 +36,12 @@
   },
   "homepage": "https://github.com/Rundiz/rd-pagination.js#readme",
   "devDependencies": {
+    "@rollup/plugin-legacy": "^3.0.2",
     "jest": "^30.0.4",
     "jsdoc": "^4.0.4",
     "jsdoc-to-markdown": "^9.1.1",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.44.2",
     "terser": "^5.43.1"
   }
 }
