@@ -200,9 +200,9 @@ class RdPagination {
     /**
      * Generate pagination URL.
      * 
-     * @param {integer} page_value Page number value.
+     * @param {number} page_value Page number value.
      * @param {string} direction The direction can be first, previous, next, last, number.
-     * @param {boolean} return_value_ony Set to true to return the page value only. Set to false to return as URL.
+     * @param {boolean} return_value_only Set to true to return the page value only. Set to false to return as URL.
      * @returns {string} Return generated URL.
      */
     #generateUrl(page_value, direction = '', return_value_only = false) {
@@ -876,7 +876,3 @@ class RdPagination {
 
 }// RdPagination
 
-
-if (typeof module === "object" && typeof module.exports === "object") {
-    module.exports = RdPagination;
-}
