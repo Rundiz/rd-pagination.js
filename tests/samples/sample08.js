@@ -15,6 +15,12 @@ class Sample08 {
 
 
     /**
+     * @type {number} Current start offset for main contents.
+     */
+    #currentOffset = 0;
+
+
+    /**
      * @type {object} Raw data of custom pagination.
      */
     #customPaginationRawData = {};
@@ -71,7 +77,7 @@ class Sample08 {
 
 
     /**
-     * Diaplay pagination for main contents.
+     * Diaplay custom pagination for main contents.
      * 
      * @returns {void} Return void if not found a placeholder (wrapper) to display custom pagination.
      */
@@ -150,6 +156,38 @@ class Sample08 {
 
 
     /**
+     * Pagination tasks.
+     * 
+     * Display custom pagination & display placeholders in pagination such as start item, end item, etc.
+     * 
+     * @param {HTMLElement|null} thisTarget The selected element that is active on event such as clicked, changed. Use `null` for not on event.
+     * @param {number} pageValue Pagination value (or offset) on currently active page.
+     */
+    #content_paginationTasks(thisTarget, pageValue) {
+        this.#content_displayCustomPagination();
+        this.#content_displayPaginationPlaceholders(pageValue);
+
+        if (thisTarget instanceof HTMLElement) {
+            let href = '';
+            if (thisTarget.href) {
+                href = thisTarget.href;
+            } else if (thisTarget.options) {
+                const selected = thisTarget.options[thisTarget.options.selectedIndex];
+                href = '?start=' + selected.dataset.rdPaginationPageValue;
+            }
+            
+            if ('' !== href) {
+                const data = {
+                    'pageValue': pageValue,
+                    'prevURL': window.location.href,
+                };
+                window.history.pushState(data, '', href);
+            }
+        }
+    }// #content_paginationTasks
+
+
+    /**
      * Listen change on custom pagination select box.
      */
     #listenCustomPaginationChangeEvent() {
@@ -163,13 +201,13 @@ class Sample08 {
 
             const selected = thisTarget.options[thisTarget.options.selectedIndex];
             const pageValue = parseInt(selected.dataset.rdPaginationPageValue);
+            this.#currentOffset = pageValue;
             // update main contents
-            this.content_display(pageValue);
+            this.content_display();
             // update option to pagination class and re-display custom pagination again.
             this.#paginationObj.updateOptions({page_number_value: pageValue});
             this.#customPaginationRawData = this.#paginationObj.getPaginationData();
-            this.#content_displayCustomPagination();
-            this.#content_displayPaginationPlaceholders(pageValue);
+            this.#content_paginationTasks(thisTarget, pageValue);
             // re-create primary pagination links.
             this.#paginationObj.reCreateLinks(this.#customPaginationRawData);
         });
@@ -193,31 +231,70 @@ class Sample08 {
             }
 
             const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
-            // trigger click the same button on primary pagination to update main contents (based on page clicked).
-            const targetLink = document.querySelector(this.#mainPaginationSelector + ' [data-rd-pagination-page-value="' + pageValue + '"]');
-            if (targetLink) {
-                targetLink.click();
-            }
+            this.#currentOffset = pageValue;
+            // update main contents
+            this.content_display();
             // update option to pagination class and re-display custom pagination again.
             this.#paginationObj.updateOptions({page_number_value: pageValue});
             this.#customPaginationRawData = this.#paginationObj.getPaginationData();
-            this.#content_displayCustomPagination();
-            this.#content_displayPaginationPlaceholders(pageValue);
+            this.#content_paginationTasks(thisTarget, pageValue);
+            // re-create primary pagination links.
+            this.#paginationObj.reCreateLinks(this.#customPaginationRawData);
         });
     }// #listenCustomPaginationClickEvent
+
+
+    /**
+     * Listen pop state and display contents based on URL.
+     */
+    #listenPopState() {
+        window.addEventListener('popstate', (event) => {
+            if (typeof(event.state?.pageValue) === 'number') {
+                const pageValue = parseInt(event.state.pageValue);
+                this.#currentOffset = pageValue;
+                // update main contents
+                this.content_display();
+                // update option to pagination class and re-display custom pagination again.
+                this.#paginationObj.updateOptions({page_number_value: pageValue});
+                this.#customPaginationRawData = this.#paginationObj.getPaginationData();
+                this.#content_paginationTasks(null, pageValue);
+                // re-create primary pagination links.
+                this.#paginationObj.reCreateLinks(this.#customPaginationRawData);
+            }
+        });
+    }// #listenPopState
+
+
+    /**
+     * Set initial history state.
+     */
+    #setInitialHistoryState() {
+        this.content_prepareOffset();
+        const data = {
+            'pageValue': this.#currentOffset,
+            'pageURL': window.location.href,
+        };
+        window.history.replaceState(data, '', window.location.href);
+    }// #setInitialHistoryState
+
+
+    /**
+     * Sample 8 JS class constructor.
+     */
+    constructor() {
+        this.#listenPopState();
+        this.#setInitialHistoryState();
+    }// constructor
 
 
     /**
      * Display main contents.
      * 
      * @async
-     * @param {number} start Start offset number.
      * @returns 
      */
-    async content_display(start = 0) {
-        if (typeof(start) !== 'number') {
-            start = 0;
-        }
+    async content_display() {
+        const start = this.#currentOffset;
 
         const data = this.#dummyData.slice(start, (parseFloat(start) + this.#itemsPerPage));
 
@@ -265,6 +342,18 @@ class Sample08 {
 
 
     /**
+     * Prepare current offset.
+     */
+    content_prepareOffset() {
+        const params = new URL(document.location.toString()).searchParams;
+        const start = params.get('start');
+        if (start) {
+            this.#currentOffset = parseInt(start);
+        }
+    }// content_prepareOffset
+
+
+    /**
      * Setup main contents.
      * 
      * This will be called when pagination from `createLinks()` were clicked.
@@ -276,13 +365,12 @@ class Sample08 {
     content_setup(thisTarget, event, options) {
         event.preventDefault();
         const pageValue = parseInt(thisTarget.dataset.rdPaginationPageValue);
-        sample08Obj.content_display(pageValue);
+        sample08Obj.#currentOffset = pageValue;
+        sample08Obj.content_display();
 
         // get raw data to custom pagination and display them again.
         sample08Obj.#customPaginationRawData = sample08Obj.#paginationObj.getPaginationData();
-        sample08Obj.#content_displayCustomPagination();
-
-        sample08Obj.#content_displayPaginationPlaceholders(pageValue);
+        sample08Obj.#content_paginationTasks(thisTarget, pageValue);
     }// content_setup
 
 
@@ -292,7 +380,7 @@ class Sample08 {
     content_setupPagination() {
         this.#paginationObj = new RdPagination(this.#mainPaginationSelector, {
             base_url: '?start=%PAGENUMBER%',
-            page_number_value: 0,
+            page_number_value: this.#currentOffset,
             total_records: this.#dummyData.length,
             items_per_page: this.#itemsPerPage,
 
@@ -361,9 +449,7 @@ class Sample08 {
         this.#customPaginationRawData = this.#paginationObj.getPaginationData();
         this.#listenCustomPaginationClickEvent();
         this.#listenCustomPaginationChangeEvent();
-        this.#content_displayCustomPagination();
-
-        this.#content_displayPaginationPlaceholders();
+        this.#content_paginationTasks(null, this.#currentOffset);
     }// content_setupPagination
 
 
@@ -459,6 +545,9 @@ class Sample08 {
 }// Sample08
 
 
+/**
+ * @type {Sample08} The class Sample08
+ */
 let sample08Obj;
 // ====================================
 document.addEventListener('DOMContentLoaded', (event) => {
