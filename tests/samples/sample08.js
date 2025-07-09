@@ -101,7 +101,7 @@ class Sample08 {
             paginationHTML += i;
             paginationHTML += '</option>';
         }// endfor;
-        paginationHTML += '</select> / <span class="main-total-items"></span>';
+        paginationHTML += '</select> / <span class="main-total-pages"></span>';
         paginationHTML += '</li>';
         paginationHTML += '<li><a href="' + generatedPages?.next_page?.link + '"'
             + ' data-rd-pagination-link="true" data-rd-pagination-page-value="' + generatedPages?.next_page?.page_value + '"' 
@@ -123,23 +123,28 @@ class Sample08 {
             start = 0;
         }
 
-        const mainStartItem = document.getElementById('main-start-item');
-        if (mainStartItem) {
+        const allMainStartItem = document.querySelectorAll('.main-start-item');
+        allMainStartItem?.forEach((mainStartItem) => {
             mainStartItem.innerText = parseFloat(start) + 1;
-        }
+        });
 
-        const mainEndItem = document.getElementById('main-end-item');
-        if (mainEndItem) {
-            let endItemNumber = (parseFloat(start) + this.#itemsPerPage);
-            if (endItemNumber > this.#dummyData.length) {
-                endItemNumber = this.#dummyData.length;
-            }
-            mainEndItem.innerText = endItemNumber;
+        let endItemNumber = (parseFloat(start) + this.#itemsPerPage);
+        if (endItemNumber > this.#dummyData.length) {
+            endItemNumber = this.#dummyData.length;
         }
+        const allMainEndItem = document.querySelectorAll('.main-end-item');
+        allMainEndItem?.forEach((mainEndItem) => {
+            mainEndItem.innerText = endItemNumber;
+        });
 
         const allMainTotalItems = document.querySelectorAll('.main-total-items');
         allMainTotalItems?.forEach((mainTotalItems) => {
             mainTotalItems.innerText = this.#dummyData.length;
+        });
+
+        const allMainTotalPages = document.querySelectorAll('.main-total-pages');
+        allMainTotalPages?.forEach((mainTotalPages) => {
+            mainTotalPages.innerText = this.#customPaginationRawData.total_pages;
         });
     }// #content_displayPaginationPlaceholders
 
