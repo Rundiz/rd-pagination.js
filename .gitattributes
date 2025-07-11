@@ -53,7 +53,10 @@
 /.tests export-ignore
 /jest.config.js export-ignore
 /jest.config.mjs export-ignore
+/jsconfig.json export-ignore
 /node_modules export-ignore
 /package.json export-ignore
 /package-lock.json export-ignore
+/rollup.config.js export-ignore
+/rollup.config.mjs export-ignore
 /tests export-ignore
