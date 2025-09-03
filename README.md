@@ -1,6 +1,6 @@
 # Rundiz Pagination.JS
 
-JavaScript Pagination.<br>
+JavaScript Pagination.  
 The highly customizable JS pagination class. 
 
 [![npm](https://img.shields.io/npm/v/rd-pagination.js)](https://www.npmjs.com/package/rd-pagination.js) 
