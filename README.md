@@ -36,14 +36,3 @@ That's all. See more samples in folder **tests/samples**.
 * [Sample 6](https://rundiz.github.io/rd-pagination.js/tests/samples/sample06-ajax.html) use AJAX. (Please download and try it from your server.)
 * [Sample 7](https://rundiz.github.io/rd-pagination.js/tests/samples/sample07.html) use multiple pagination.
 * [Sample 8](https://rundiz.github.io/rd-pagination.js/tests/samples/sample08.html) use custom design.
-
-## Pagination parts description
-This repository ported from [Rundiz Pagination](https://github.com/Rundiz/pagination). So, I will use image from that.
-![Pagination](https://github.com/Rundiz/pagination/raw/master/tests/via-http/pagination-description.jpg "Pagination description")
-
-* "before unavailable" items number can be set via `unavailable_before` option. Example: `{unavailable_before: 1}`
-* "unavailable" text can be set via `unavailable_text` option. Example: `{unavailable_text: '..'}`
-* "adjacent pages" can be set the number via `number_adjacent_pages` option. Example: `{number_adjacent_pages: = 3}`
-* "after unavailable" items number can be set via `unavailable_after` option. Example: `{unavailable_after: 2}`
-* Read more in JS class constructor on `options` argument.
-
