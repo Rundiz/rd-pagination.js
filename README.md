@@ -3,13 +3,6 @@
 JavaScript Pagination.  
 The highly customizable JS pagination class. 
 
-[![npm](https://img.shields.io/npm/v/rd-pagination.js)](https://www.npmjs.com/package/rd-pagination.js) 
-[![NPM](https://img.shields.io/npm/l/rd-pagination.js)](https://www.npmjs.com/package/rd-pagination.js) 
-[![npm](https://img.shields.io/npm/dt/rd-pagination.js)](https://www.npmjs.com/package/rd-pagination.js)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rundiz/rd-pagination.js)
-![GitHub repo size](https://img.shields.io/github/repo-size/rundiz/rd-pagination.js)
-![GitHub all releases](https://img.shields.io/github/downloads/Rundiz/rd-pagination.js/total?style=social)
-
 Example:  
 All HTML you need.
 ```html
