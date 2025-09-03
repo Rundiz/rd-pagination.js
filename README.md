@@ -38,7 +38,7 @@ That's all. See more samples in folder **tests/samples**.
 * [Sample 8](https://rundiz.github.io/rd-pagination.js/tests/samples/sample08.html) use custom design.
 
 ## Pagination parts description
-This repository ported from [Rundiz Pagination](https://github.com/Rundiz/pagination). So, many options will be same.
+This repository ported from [Rundiz Pagination](https://github.com/Rundiz/pagination). So, many options will be same.  
 ![Pagination](https://github.com/Rundiz/rd-pagination.js/raw/master/tests/samples/pagination-description.webp "Pagination description")
 
 * "before unavailable" items number can be set via `unavailable_before` option. Example: `{unavailable_before: 1}`
