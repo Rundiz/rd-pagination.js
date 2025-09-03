@@ -39,7 +39,7 @@ That's all. See more samples in folder **tests/samples**.
 
 ## Pagination parts description
 This repository ported from [Rundiz Pagination](https://github.com/Rundiz/pagination). So, the options mostly the same.
-![Pagination](tests/samples/pagination-description.webp "Pagination description")
+![Pagination](https://github.com/Rundiz/rd-pagination.js/raw/master/tests/samples/pagination-description.webp "Pagination description")
 
 * "before unavailable" items number can be set via `unavailable_before` option. Example: `{unavailable_before: 1}`
 * "unavailable" text can be set via `unavailable_text` option. Example: `{unavailable_text: '..'}`
